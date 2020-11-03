@@ -1,0 +1,429 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
+:root {
+    --color-main: #0d97f3;
+    --color-sub: #fff;
+    --color-highlight: #b691eb;
+    --navbar-button-border-width: .6rem;
+    --navbar-button-bar-height: .35rem;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+}
+
+.header {
+    position: relative;
+    height: 60rem;
+    width: 100%;
+    overflow: scroll-y;
+}
+
+.word{
+    font-size: 3rem;
+    font-family: 'Inter', sans-serif;
+    position: absolute;
+    font-weight: lighter;
+    top: 2%;
+    right: 60%
+}
+@media only screen and (max-width: 37.5em) {
+    .header {
+    height: 50rem;
+    }
+}
+.header-picture img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center;
+    object-position: center;
+}
+
+@media only screen and (max-width: 75em) {
+    .word {
+    display: inline;
+    font-size: 2.5rem;
+    font-weight: bold;
+    background-color: transparent;
+    }
+}
+@media only screen and (min-width: 112.5em) {
+    .word {
+    font-size: 7.5rem;
+    }
+}
+
+.navbar {
+    border: none;
+    margin: 0 auto;
+    width: 100%;
+  /*  Adjust navbar with these media queries */
+  /*    ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^^^ ^ ^^ ^ ^^ ^ */
+}
+@media only screen and (max-width: 37.5em) {
+    .navbar {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: .1rem;
+    z-index: 3;
+    }
+}
+@media only screen and (min-width: 112.5em) {
+    .navbar {
+    width: 50%;
+    }
+}
+.navbar-links {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    list-style: none;
+  /*  Adjust 'navbar links' with these media queries */
+  /* when this page is accessed on a phone,
+  	hide the navbar, only show it when you click on the
+  	label */
+  /*    ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^^^ ^ ^^ ^ ^^ ^ */
+}
+@media only screen and (max-width: 37.5em) {
+  .navbar-links {
+    display: none;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+    width: 100%;
+    max-height: 100%;
+  }
+}
+.navbar-link {
+  color: black;
+  font-size: 2.1rem;
+  font-weight: 700;
+  height: 100%;
+  letter-spacing: .5rem;
+  padding: .5rem;
+  text-align: center;
+  text-decoration: none;
+  -webkit-transition: all .15s ease-in;
+  transition: all .15s ease-in;
+  width: 100%;
+  /*  Adjust individual navbar link with these media queries */
+  /*    ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^^^ ^ ^^ ^ ^^ ^ */
+}
+@media only screen and (max-width: 56.25em) {
+  .navbar-link {
+    font-size: 2.5rem;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .navbar-link {
+    background-color: var(--color-main);
+    color: var(--color-sub);
+    letter-spacing: .2rem;
+    padding: 2rem;
+  }
+}
+.navbar-link:hover {
+  background: var(--color-main);
+  color: var(--color-sub);
+  cursor: pointer;
+  /*  Adjust individual navbar link hover with these media queries */
+  /*    ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^^^ ^ ^^ ^ ^^ ^ */
+}
+@media only screen and (max-width: 37.5em) {
+  .navbar-link:hover {
+    background-color: var(--color-sub);
+    color: var(--color-main);
+  }
+}
+.navbar-button {
+  display: none;
+  background: var(--color-sub);
+  border: var(--navbar-button-border-width) solid var(--color-main);
+  cursor: pointer;
+  height: 7rem;
+  width: 7rem;
+  text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  align-self: flex-end;
+}
+@media only screen and (max-width: 37.5em) {
+  .navbar-button {
+    display: block;
+  }
+}
+.navbar-icon {
+  position: relative;
+  margin-top: 2.8rem;
+}
+.navbar-icon, .navbar-icon::before, .navbar-icon::after {
+  width: 5rem;
+  height: var(--navbar-button-bar-height);
+  background-color: var(--color-main);
+  display: inline-block;
+}
+.navbar-icon::before, .navbar-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+.navbar-icon::before {
+  top: -1.5rem;
+}
+.navbar-icon::after {
+  top: 1.5rem;
+}
+.navbar-checkbox {
+  display: none;
+}
+.navbar-checkbox:checked ~ .navbar-links {
+  display: -webkit-box;
+  display: flex;
+}
+.navbar-checkbox:checked ~ .navbar-button {
+  background: var(--color-main);
+}
+.navbar-checkbox:checked + .navbar-button .navbar-icon {
+  background-color: transparent;
+}
+.navbar-checkbox:checked + .navbar-button .navbar-icon::before {
+  background-color: var(--color-sub);
+  top: 0;
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+}
+.navbar-checkbox:checked + .navbar-button .navbar-icon::after {
+  background-color: var(--color-sub);
+  top: 0;
+  -webkit-transform: rotate(-135deg);
+          transform: rotate(-135deg);
+}
+
+.photo-grid {
+  margin: 5rem auto;
+  padding: 2rem;
+  width: 85%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 35rem;
+  grid-column-gap: 1.2rem;
+  grid-row-gap: 2rem;
+  /*  Adjust photo grid with these media queries */
+  /*    ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^^^ ^ ^^ ^ ^^ ^ */
+}
+@media only screen and (max-width: 75em) {
+  .photo-grid {
+    grid-auto-rows: 25rem;
+    width: 95%;
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  .photo-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 34rem;
+    grid-column-gap: .5rem;
+    grid-row-gap: 1rem;
+    padding: .1rem;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .photo-grid {
+    grid-template-columns: 100%;
+    grid-auto-rows: 39rem;
+    width: 100%;
+    padding: 0;
+  }
+}
+@media only screen and (min-width: 112.5em) {
+  .photo-grid {
+    width: 120rem;
+    grid-auto-rows: 35rem;
+  }
+}
+.photo-grid > * {
+  box-shadow: 1rem 0.5rem 1rem rgba(0, 0, 0, 0.4);
+}
+
+.photo {
+  -webkit-transition: -webkit-transform .2s ease-in-out;
+  transition: -webkit-transform .2s ease-in-out;
+  transition: transform .2s ease-in-out;
+  transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
+}
+.photo:hover {
+  cursor: pointer;
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+}
+.photo img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.photo-tall {
+  grid-row: span 2;
+}
+.photo-tall img {
+  -o-object-position: 56%;
+     object-position: 56%;
+}
+@media only screen and (max-width: 56.25em) {
+  .photo-tall {
+    grid-row: span 3;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .photo-tall {
+    grid-row: initial;
+  }
+}
+.photo-fat {
+  grid-row: span 2;
+  grid-column: span 2;
+}
+.photo-full {
+  grid-column: 1 / -1;
+}
+.photo-long {
+  grid-column: span 3;
+}
+@media only screen and (max-width: 56.25em) {
+  .photo-long {
+    grid-column: span 2;
+  }
+}
+
+.footer {
+  background: var(--color-main);
+  font-size: 2rem;
+  padding: 5rem 7rem;
+  width: 100%;
+  color: var(--color-sub);
+}
+@media only screen and (max-width: 56.25em) {
+  .footer {
+    padding: 5rem 1rem;
+  }
+}
+.footer__logo {
+  font-size: 2em;
+  margin-bottom: 1rem;
+}
+.footer__logo i {
+  color: green;
+}
+@media only screen and (max-width: 56.25em) {
+  .footer__logo {
+    margin-left: -6rem;
+    text-align: center;
+  }
+}
+.footer__links {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+  font-size: .7em;
+}
+@media only screen and (max-width: 56.25em) {
+  .footer__links {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+    -webkit-box-align: center;
+            align-items: center;
+    font-size: 1em;
+  }
+}
+.footer__links > * {
+  margin-bottom: 5rem;
+}
+.footer__links--contact {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+}
+.footer__links--contact > *:not(:last-child) {
+  margin: 2rem 0;
+}
+.footer__links--more-info {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-flow: row wrap;
+}
+.footer__links--more-info .footer__link {
+  font-size: 1.4em;
+  -webkit-box-flex: 1;
+          flex: 1 0 33%;
+  margin-bottom: 1rem;
+}
+@media only screen and (max-width: 75em) {
+  .footer__links--more-info .footer__link {
+    font-size: 1em;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .footer__links--more-info {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+  }
+}
+.footer__links--social-media {
+  display: -webkit-box;
+  display: flex;
+  font-size: 2em;
+}
+.footer__links--social-media > * {
+  color: white;
+}
+.footer__links--social-media > *:not(:last-child) {
+  margin-right: 1.3rem;
+}
+.footer__link {
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+.footer__link a {
+  text-decoration: none;
+  color: white;
+}
+.footer__link:hover {
+  color: var(--color-highlight);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+::-moz-selection {
+  background-color: var(--color-main);
+  color: var(--color-sub);
+}
+
+::selection {
+  background-color: var(--color-main);
+  color: var(--color-sub);
+}
